@@ -1,0 +1,44 @@
+.imageBlock {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.singleName {
+  font-size: 24px;
+  text-transform: capitalize;
+}
+
+.avtorName {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.slider {
+  position: relative;
+  width: 175px;
+  height: 4px;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+/* общий */
+.icon {
+  width: 35px;
+  height: 35px;
+  padding: 7px;
+  box-shadow: 0.1px 8px 8px 2px rgb(0 0 0 / 40%);
+  border-radius: 100%;
+  fill: var(--main-color);
+
+  &:hover {
+    background: linear-gradient(to right, #ff5722, #ff7043);
+  }
+}

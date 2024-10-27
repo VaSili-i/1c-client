@@ -1,0 +1,18 @@
+.Button {
+  color: #6f6fd8;
+  text-transform: uppercase;
+}
+
+.circle {
+  width: 33px;
+  height: 32px;
+  padding: 5px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 100%;
+  background: var(--delete-color);
+
+  &:hover {
+    transition: all 0.3s ease-in-out;
+    rotate: 90deg;
+  }
+}

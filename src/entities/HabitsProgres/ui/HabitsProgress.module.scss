@@ -1,0 +1,31 @@
+.HabitsProgress {
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow:
+          inset 5px 5px 5px rgb(17 146 230 / 50%),
+          inset 0 -5px 5px rgb(17 146 230 / 50%),
+          inset 5px 5px 10px rgb(17 146 230 / 50%),
+          inset -5px -5px 10px rgb(17 146 230 / 50%);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+
+}
+
+.progress {
+  color: red;
+  font-size: 33px;
+
+}
+
+.colorText {
+  color: blue;
+}
+
+.title {
+  color: var(--main-color);
+}
+
+.progressCount {
+  color: var(--main-color);
+  font-size: 25px;
+}

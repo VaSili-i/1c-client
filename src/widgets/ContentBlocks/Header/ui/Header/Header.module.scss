@@ -1,0 +1,18 @@
+.Header {
+  height: 100%;
+  padding: 0 40px;
+  background: var(--reverse-bg-color);
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  padding: 2px;
+  transition: all var(--time-small) ease-in-out;
+  fill: var(--secondary-color);
+}
+
+.timeText {
+  color: var(--secondary-color);
+}

@@ -1,0 +1,111 @@
+.Card {
+  position: relative;
+  overflow: hidden;
+  max-width: 450px;
+  height: 500px;
+  box-shadow:
+    inset 15px 15px 2px var(--main-color),
+    inset -15px -15px 2px var(--main-color),
+    inset -5px 5px 2px var(--main-color);
+  border-radius: 70px 20px 20px;
+  background: var(--up-bg-color);
+}
+
+.iconBox {
+  width: 130px;
+  height: 130px;
+  transition: 0.5s;
+  border-bottom-right-radius: 50%;
+  background: var(--main-color);
+
+  &::before {
+    position: absolute;
+    top: 120px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    content: '';
+    box-shadow: -5px -5px 0 5px var(--main-color);
+    border-top-left-radius: 30px;
+    background: transparent;
+  }
+
+  &::after {
+    position: absolute;
+    top: 10px;
+    left: 130px;
+    width: 30px;
+    height: 30px;
+    content: '';
+    box-shadow: -5px -5px 0 5px var(--main-color);
+    border-top-left-radius: 30px;
+    background: transparent;
+  }
+}
+
+.metaInfo {
+  color: #fff;
+  width: 140px;
+  height: 100%;
+  padding: 15px 0 0 5px;
+  border-bottom: 1px solid var(--main-color);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  padding: 22px;
+  fill: #fff;
+  opacity: 0.8;
+}
+
+.circleIcon {
+  position: relative;
+  z-index: 2;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: var(--up-bg-color);
+}
+
+.content {
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  height: min(100%, 180px);
+  padding: 20px;
+
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0 5px 5px;
+  }
+
+  p {
+    font-size: 16px;
+    opacity: 0.75;
+  }
+}
+
+.button {
+  text-transform: uppercase;
+  align-self: center;
+  margin: 40px 0;
+  padding: 10px 15px;
+  transition: 0.5s;
+  border-radius: 30px;
+  background: var(--main-color);
+
+  &:hover {
+    letter-spacing: 0.1em;
+  }
+}
+
+.AppLink {
+  color: #fff;
+  text-decoration: underline;
+}

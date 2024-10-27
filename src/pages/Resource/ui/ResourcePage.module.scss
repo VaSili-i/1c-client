@@ -1,0 +1,119 @@
+.ResourcePage {
+  width: 90%;
+  height: 100vh;
+  padding-top: 10px;
+}
+
+.container {
+  display: grid;
+
+  width: max(70%, 200px);
+  margin-right: 0 auto;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 50px 20px;
+}
+
+.filterBar {
+  width: max(10%, 250px);
+  height: max(10%, 400px);
+  padding: 15px;
+  border-radius: 15px;
+  background: var(--bg-color);
+}
+
+.circle {
+  position: relative;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  transition: 0.5s;
+  border-radius: 60px;
+  background: #fff;
+
+  &.active {
+    width: 220px;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 60px;
+  background: #fff;
+
+  &::before {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    content: '';
+    transform: translate(-4px, -4px);
+    border: 2px solid #287dfc;
+    border-radius: 50%;
+  }
+
+  &::after {
+    position: absolute;
+    width: 2px;
+    height: 12px;
+    content: '';
+    transform: translate(6px, 6px) rotate(315deg);
+    background: #287dfc;
+  }
+}
+
+.searchInput {
+  position: relative;
+  left: 40px;
+  width: 170px;
+  height: 40px;
+  padding: 0 25px 0 5px;
+  border: none;
+  outline: navajowhite;
+}
+
+.clear {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  &::before {
+    position: absolute;
+    width: 1px;
+    height: 15px;
+    content: '';
+    transform: rotate(45deg);
+    background: #999;
+  }
+
+  &::after {
+    position: absolute;
+    width: 1px;
+    height: 15px;
+    content: '';
+    transform: rotate(135deg);
+    background: #999;
+  }
+}
+
+.colorFill {
+  fill: var(--main-color);
+  width: 45px;
+  height: 45px;
+  padding: 0px;
+}

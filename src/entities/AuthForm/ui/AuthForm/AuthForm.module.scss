@@ -1,0 +1,76 @@
+.AuthForm {
+  position: relative;
+  overflow: hidden;
+  width: 750px;
+  height: 450px;
+  box-shadow: 0 0 25px #0ef;
+  transition: all 0.8s;
+  border: 2px solid #0ef;
+  background: transparent;
+
+  .lineAnimation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 850px;
+    height: 600px;
+    transition: all 0.8s;
+    transform: rotate(10deg) skewY(40deg);
+    transform-origin: bottom right;
+    border-bottom: 3px solid #0ef;
+    background: linear-gradient(45deg, #081b29, #0ef);
+  }
+
+  .lineAnimation2 {
+    position: absolute;
+    top: 100%;
+    left: 250px;
+    width: 850px;
+    height: 700px;
+    transition: all 0.8s;
+    transform: rotate(0) skewY(0);
+    transform-origin: bottom left;
+    border-top: 3px solid #0ef;
+    background: #081b29;
+  }
+
+  &.register {
+    .lineAnimation {
+      transform: rotate(0) skewY(0);
+    }
+
+    .lineAnimation2 {
+      transform: rotate(-11deg) skewY(-41deg);
+    }
+  }
+
+  .login {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+
+    h2 {
+      font-size: 32px;
+      color: #fff;
+      text-align: center;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .left {
+    left: 0;
+    padding: 0 60px 0 40px;
+  }
+
+  .right {
+    right: 0;
+    padding: 0 40px 0 60px;
+  }
+}

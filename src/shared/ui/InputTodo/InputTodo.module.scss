@@ -1,0 +1,50 @@
+.item {
+  flex-grow: 1;
+  width: 100%;
+  height: 42px;
+  padding: 5px;
+  border: solid 1px var(--main-color);
+  border-radius: 30px;
+  background: rgb(255 255 255 / 75%);
+}
+
+.text {
+  font-size: 16px;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+}
+
+.checkb {
+  flex-shrink: 2;
+  width: 35px;
+  height: 100%;
+  cursor: pointer;
+  border: 1px solid var(--main-color);
+  border-radius: 100%;
+  background-color: #ddd;
+  appearance: none;
+
+  &:checked {
+    border: 1px solid #bbb;
+    background: var(--reverse-main-color);
+    appearance: none;
+
+    &::after {
+      font-size: 30px;
+      font-weight: 900;
+      color: rgb(255 255 255 / 80%);
+      position: relative;
+      top: 15px;
+      left: 17px;
+      display: block;
+      content: '\2713'; /* Unicode символ галочки */
+      transform: translate(-50%, -50%);
+    }
+
+    & + .text {
+      text-decoration: line-through;
+    }
+  }
+}
+

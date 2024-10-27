@@ -1,0 +1,59 @@
+.Dropdown {
+  position: absolute;
+  top: 115%;
+  right: 7%;
+  min-width: 120px;
+  height: 180px;
+  transition: all var(--time-middle) ease-in-out;
+  border-radius: 5%;
+  background: var(--up-bg-color);
+
+  &.close {
+    z-index: -10;
+    height: 0;
+    opacity: 0;
+    transition: all var(--time-middle) ease-in-out;
+    pointer-events: none;
+  }
+
+  &::before {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    content: '';
+    transform: rotate(45deg);
+    border-radius: 25%;
+    background: var(--up-bg-color);
+  }
+}
+
+.icon {
+  width: 34px;
+  height: 34px;
+  padding: 8px;
+  fill: var(--main-color);
+  transition: all var(--time-much) ease-in-out;
+}
+
+.textIcon {
+  color: var(--main-color);
+  transition: all var(--time-much) ease-in-out;
+}
+
+.Dropdown.close .textIcon,
+.Dropdown.close .icon {
+  opacity: 0;
+  transition: all var(--time-small) ease-in-out;
+}
+
+.linc {
+  overflow: hidden;
+  width: 100%;
+}
+
+.linc:hover {
+  box-shadow: 0 0 2px 1px var(--reverse-main-color);
+  border-radius: 5%;
+}

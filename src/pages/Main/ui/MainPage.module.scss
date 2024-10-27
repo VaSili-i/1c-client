@@ -1,0 +1,21 @@
+.MainPage {
+  display: inline-block;
+  height: 100vh;
+  margin: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  background: var(--up-bg-color);
+}
+
+.mdEditor {
+  background: var(--up-bg-color);
+}
+
+.mdText {
+  font-weight: 500;
+  width: 50%;
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background: var(--up-bg-color);
+}

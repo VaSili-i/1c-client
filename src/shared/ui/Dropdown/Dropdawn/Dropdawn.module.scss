@@ -1,0 +1,102 @@
+.Dropdown {
+  position: relative;
+  width: 200px;
+
+  &::before {
+    position: relative;
+    top: 30px;
+    left: 90%;
+    display: block;
+    width: 5px;
+    height: 5px;
+    content: '';
+    transition: 0.3s;
+    border-top: 6px solid #fff;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+  }
+
+  &.open::before {
+    transition: 0.3s;
+    transform: rotate(180deg);
+  }
+}
+
+.icon {
+  width: 34px;
+  height: 34px;
+  padding: 5px;
+  fill: var(--main-color);
+  transition: all var(--time-much) ease-in-out;
+}
+
+.textIcon {
+  color: var(--main-color);
+  width: 1px;
+  transition: all var(--time-much) ease-in-out;
+}
+
+.select {
+  color: #fff;
+  padding: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: 2px solid #2a2f3d;
+  border-radius: 0.5em;
+  background: #2a2f3d;
+
+  &:hover {
+    background: #323741;
+  }
+
+  &.checked {
+    box-shadow: 0 0 0.8em #26489a;
+    border: 2px solid #26489a;
+  }
+}
+
+.menu {
+  color: #9fa5b5;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  display: none;
+  width: 200px;
+  padding: 0.2em 0.5em;
+  list-style: none;
+  box-shadow: 0 0.5em 1em rgb(0 0 0 / 20%);
+  opacity: 0;
+  transition: 0.2s;
+  transform: translateX(-50%);
+  border: 1px #363741 solid;
+  border-radius: 0.5em;
+  background: #323741;
+
+  li {
+    margin: 0.3em 0;
+    padding: 0.7em 0.5em;
+    cursor: pointer;
+    border-radius: 0.5em;
+
+    &:hover {
+      background: #2a2d35;
+    }
+  }
+}
+
+.active {
+  padding: 0 10px;
+  pointer-events: none;
+  border-radius: 10px;
+  background: #23242a;
+}
+
+.notActive {
+  padding: 0 10px;
+  border-radius: 10px;
+}
+
+.menuOpen {
+  display: block;
+  opacity: 1;
+}

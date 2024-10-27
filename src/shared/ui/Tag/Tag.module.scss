@@ -1,0 +1,23 @@
+.Tag {
+  color: #fff;
+  text-shadow: 0 2px 20px var(--main-color);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  width: 90px;
+  height: 40px;
+  padding-top: 10px;
+  user-select: none;
+  border-radius: 20px;
+  background: var(--main-color);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    content: '';
+    background: rgb(255 255 255 / 10%);
+  }
+}

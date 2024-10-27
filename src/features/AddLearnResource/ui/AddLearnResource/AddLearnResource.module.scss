@@ -1,0 +1,18 @@
+.AddLearnResource {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.99;
+  background: var(--bg-color);
+  inset: 0;
+}
+
+.form {
+  z-index: 1;
+  width: 30%;
+  padding: 50px;
+  border: 2px solid var(--reverse-bg-color);
+  border-radius: 30px;
+  background: var(--reverse-secondary-color);
+}

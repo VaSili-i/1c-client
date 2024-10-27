@@ -1,0 +1,204 @@
+.RegisterForm {
+  .title {
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    padding: 0 60px 0 40px;
+  }
+
+  .inputBox {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 15px 0;
+  }
+
+  .btn {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 45px;
+    cursor: pointer;
+    border: 2px solid #0ef;
+    border-radius: 40px;
+    outline: none;
+    background: transparent;
+
+    &::before {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 300%;
+      content: '';
+      transition: all 0.5s;
+      background: linear-gradient(#081b29, #0ef, #081b29);
+    }
+  }
+
+  .btn:hover::before {
+    top: 0;
+    transition: all 0.5s;
+  }
+
+  .toggleText {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    margin: 20px 0 10px;
+  }
+
+  .infoLogin {
+    color: #fff;
+    text-align: left;
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 260px;
+    height: 100%;
+    padding: 20px;
+
+    h2 {
+      font-size: 32px;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+  }
+
+  // disabled
+  &.disable {
+    transform: translateX(110%);
+
+    .title {
+      opacity: 0;
+      transition: all 0.8s 2s;
+      transform: translateX(120%);
+      filter: blur(10px);
+    }
+
+    .inputBox {
+      opacity: 0;
+      transition: all 0.8s 0.2s;
+      transform: translateX(120%);
+      filter: blur(10px);
+    }
+
+    .btn {
+      opacity: 0;
+      transition: all 0.8s 0.4s;
+      transform: translateX(120%);
+      filter: blur(10px);
+    }
+
+    .toggleText {
+      opacity: 0;
+      transition: all 0.8s 0.6s;
+      transform: translateX(120%);
+      filter: blur(10px);
+    }
+
+    .infoLogin {
+      h2 {
+        opacity: 1;
+        transition: all 0.5s 0.8s;
+        transform: translateX(220%);
+        filter: blur(0);
+      }
+
+      p {
+        opacity: 1;
+        transition: all 1s 0.8s;
+        transform: translateX(120%);
+        filter: blur(0);
+      }
+    }
+  }
+}
+
+.input {
+  font-weight: 500;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  padding-right: 25px;
+  transition: all 0.5s;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.icon {
+  font-size: 18px;
+  color: #fff;
+  position: absolute;
+  top: 30%;
+  right: 0;
+  width: 20px;
+  fill: #fff;
+}
+
+.label {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transition: all 0.5s;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.input:focus,
+.input:valid {
+  border-bottom-color: #0ef;
+
+  ~ label {
+    color: #0ef;
+    top: -5px;
+  }
+
+  ~ .icon {
+    fill: #0ef;
+  }
+}
+
+.linkText {
+  font-weight: 600;
+  color: #0ef;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.animation {
+  opacity: 1;
+  transition: all 0.5s;
+  transform: translateX(0);
+  filter: blur(0);
+
+  &.active {
+    opacity: 0;
+    transition: all 0.5s;
+    transform: translateX(-120%);
+    filter: blur(10px);
+  }
+}

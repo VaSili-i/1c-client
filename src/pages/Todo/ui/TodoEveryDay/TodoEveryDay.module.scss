@@ -1,0 +1,36 @@
+.EveryDay {
+  width: 100%;
+  height: 80%;
+  padding: 0 25px;
+  box-shadow:
+    25px 25px 75px rgb(17 146 230 / 25%),
+    10px 10px 70px rgb(0 0 0 / 25%),
+    inset 5px 5px 5px rgb(17 146 230 / 50%),
+    inset 0 -5px 5px rgb(17 146 230 / 50%),
+    inset 5px 5px 10px rgb(17 146 230 / 50%),
+    inset -5px -5px 10px rgb(17 146 230 / 50%);
+  border-radius: 10px;
+  background: var(--reverse-bg-color);
+}
+
+.imageArrow {
+  width: 120px;
+  fill: var(--reverse-main-color);
+
+  &:hover {
+    fill: var(--main-color);
+  }
+}
+
+.blockInput {
+  height: 100%;
+}
+
+.icon {
+  width: 250px;
+  height: 350px;
+  margin: 0 50px;
+  padding: 8px;
+  transition: all var(--time-much) ease-in-out;
+  fill: var(--main-color);
+}

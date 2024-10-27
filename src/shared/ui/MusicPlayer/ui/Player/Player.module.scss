@@ -1,0 +1,21 @@
+.MusicPlayer {
+  width: 300px;
+  height: 600px;
+  padding: 15px;
+  border-radius: 5%;
+  background: #01567a;
+}
+
+/* общие стили */
+.icon {
+  width: 35px;
+  height: 35px;
+  padding: 7px;
+  box-shadow: 0.1px 8px 8px 2px rgb(0 0 0 / 40%);
+  border-radius: 100%;
+  fill: var(--main-color);
+
+  &:hover {
+    background: linear-gradient(to right, #ff5722, #ff7043);
+  }
+}

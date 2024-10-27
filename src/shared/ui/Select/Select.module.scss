@@ -1,0 +1,55 @@
+.container {
+  position: relative;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.Select {
+  font-size: 1em;
+  font-weight: 550;
+  color: var(--primary-color);
+  width: 100%;
+  min-width: 320px;
+  padding: 15px;
+  transition: 0.5s;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 5px;
+
+}
+
+.placeholder {
+  font-size: 1em;
+  color: rgb(255 255 255 / 25%);
+  text-transform: uppercase;
+  position: absolute;
+  left: 10px;
+  padding: 30px;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.Select:active ~ .placeholder,
+.Select:valid ~ .placeholder {
+  font-size: 0.8em;
+  color: var(--primary-color);
+  letter-spacing: 0.3em;
+  top: 10px;
+  padding: 0 10px;
+  transform: translateX(25px) translateY(-7px);
+  border-right: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+  background: var(--reverse-bg-color);
+}
+
+.Select:active,
+.Select:valid {
+  padding-top: 15px;
+  border: 1px solid #00dfc4;
+}
+
+option {
+  font-size: 1em;
+  font-weight: 550;
+  color: var(--primary-color);
+  transition: 0.5s;
+}

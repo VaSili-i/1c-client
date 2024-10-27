@@ -1,0 +1,32 @@
+.Notification {
+  position: relative;
+  height: 100%;
+}
+
+.notificationCount {
+  font-size: 12px;
+  font-weight: bold;
+  color: #a61313;
+  text-align: center;
+  position: absolute;
+  top: 15%;
+  left: 65%;
+  width: 13px;
+  height: 13px;
+  margin-top: auto;
+  border-radius: 100%;
+  background: var(--secondary-color);
+}
+
+.notificationList {
+  width: 340px;
+}
+
+/* repeat */
+.icon {
+  width: 35px;
+  height: 35px;
+  padding: 2px;
+  transition: all var(--time-small) ease-in-out;
+  fill: var(--secondary-color);
+}
