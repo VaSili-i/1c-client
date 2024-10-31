@@ -12,8 +12,7 @@ export function getPlugins({
   // для работы с HTML
   const htmlWebpackPlugin = new HtmlWebpackPlugin({
     template: paths.html,
-    title,
-    scriptLoading: 'blocking'
+    title
   });
 
   // // для анализа размера бандлов
