@@ -15,7 +15,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     paths,
     mode: env.mode,
     port: env.port ?? 3030,
-    isDev: true,
+    isDev: false,
     apiUrl: 'http://localhost:3000',
     title: 'ComplexProject'
   };
