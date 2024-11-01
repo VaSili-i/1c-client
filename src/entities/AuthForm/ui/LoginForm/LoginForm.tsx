@@ -46,8 +46,7 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
   };
 
   useEffect(() => {
-    debugger
-    if (isSuccess && (data?.access_token != null)) {
+    if (isSuccess && data?.access_token != null) {
       localStorage.setItem('token', data?.access_token as string); // Сохранение токена в localStorage
       // Перенаправление пользователя на защищённую страницу или обновление состояния
       window.location.href = '/dashboard';
@@ -57,29 +56,29 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
   return (
     <div className={joinClassName(cls.LoginFrom, {}, cls[disable])}>
       <form className={cls.form} onSubmit={handleSubmit}>
-        <h2 className={cls.title}>Login</h2>
+        <h2 className={cls.title}>Авторизация</h2>
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
           <input required={true} className={cls.input} value={username} onChange={handleUsernameChange} />
-          <label className={cls.label}>User name</label>
+          <label className={cls.label}>Имя пользователя</label>
           <UserIcon className={cls.icon} />
         </div>
 
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
           <input required={true} type="password" className={cls.input} value={password} onChange={handlePasswordChange} />
-          <label className={cls.label}>Password</label>
+          <label className={cls.label}>Пароль</label>
           <UserIcon className={cls.icon} />
         </div>
 
         <Button
           className={cls.btn}
           onClick={() => {
-            handleLogin({ username, password });
+            void handleLogin({ username, password });
           }}>
           Login
         </Button>
         <div className={cls.toggleText}>
           <p>
-            Don't have an account?
+            Нет аккаунта?
             <AppLink
               onClick={() => {
                 setDisableCls('register');
@@ -93,7 +92,7 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
       </form>
       <VStack align={Items.END} className={joinClassName(cls.infoLogin)}>
         <h2>Welcome to login!</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
+        <p></p>
       </VStack>
     </div>
   );

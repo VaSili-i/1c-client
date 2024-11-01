@@ -18,22 +18,22 @@ export function RegistrationFrom({ disableCls, setDisableCls }: RegisterFormProp
   return (
     <div className={joinClassName(cls.RegisterForm, {}, cls[disable])}>
       <form className={cls.form}>
-        <h2 className={cls.title}>Sing Up</h2>
+        <h2 className={cls.title}>Регистрация</h2>
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
           <input required={true} className={cls.input} />
-          <label className={cls.label}>User Name</label>
+          <label className={cls.label}>Имя пользователя</label>
           <UserIcon className={cls.icon} />
         </div>
 
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
           <input required={true} className={cls.input} />
-          <label className={cls.label}>Mail</label>
+          <label className={cls.label}>Почта</label>
           <UserIcon className={cls.icon} />
         </div>
 
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
           <input required={true} className={cls.input} />
-          <label className={cls.label}>Password</label>
+          <label className={cls.label}>Пароль</label>
           <UserIcon className={cls.icon} />
         </div>
 
@@ -54,7 +54,7 @@ export function RegistrationFrom({ disableCls, setDisableCls }: RegisterFormProp
       </form>
       <VStack align={Items.START} className={joinClassName(cls.infoLogin, {}, cls.rightH)}>
         <h2 className={cls.animation}>Welcome to registration!</h2>
-        <p className={cls.animation}>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
+        <p className={cls.animation}></p>
       </VStack>
     </div>
   );
