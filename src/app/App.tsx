@@ -4,9 +4,11 @@ import { MainLayout } from 'shared/Layouts/MainLayout/MainLayout';
 import { Sidebar } from 'widgets/ContentBlocks/Sidebar';
 import { Header } from 'widgets/ContentBlocks/Header';
 
+export const isAuthenticated = (): boolean => {
+  return Boolean(localStorage.getItem('token')); // Проверка наличия токена
+};
 function App(): ReactElement {
-  console.log(54353);
-  return <MainLayout header={<Header />} sidebar={<Sidebar />} main={<AppRouter />} rightbar={<div></div>} />;
+  return <MainLayout header={<Header />} sidebar={<Sidebar />} main={<AppRouter isAuthenticated={isAuthenticated()} />} rightbar={<div></div>} />;
 }
 
 export default App;

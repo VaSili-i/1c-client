@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 import { StoreProvider } from 'app/provider/store/ui/StoreProvider';
 
 const container = document.getElementById('root');
- console.log('App is rendering');
+console.log('App is rendering');
 if (container != null) {
   container.className = 'dark';
   const root = createRoot(container);

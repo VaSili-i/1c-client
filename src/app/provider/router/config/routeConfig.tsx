@@ -20,20 +20,25 @@ import { WeekPlan } from 'pages/WeekPlan';
 import { TreeResource } from 'pages/TreeResource/ui/TreeResource';
 import ResourceLink from 'pages/ResourceLink/ui/ResourceLink';
 import { AuthPage } from 'pages/Auth';
-import Logout from 'pages/Logout/ui/Loguot';
-// import { ResourceDetails } from 'pages/ResourceDetails/ui/ResourceDetails/ResourceDetails';
+import React from 'react';
 
-export const routes: RouteProps[] = [
-  { path: getRouteMain(), element: <WeekPlan /> },
-  { path: getRouteTodo(), element: <TodoPage /> },
-  { path: getRouteResource(), element: <ResourcePage /> },
-  { path: getRouteProfile(), element: <ProfilePage /> },
-  { path: getRouteRepeat(), element: <RepeatPage /> },
-  { path: getRouteHabit(), element: <Habits /> },
-  { path: getRouteTreeResource(), element: <TreeResource /> },
-  { path: getRouteLogin(), element: <AuthPage /> },
-  { path: getRouteResourceLink(), element: <ResourceLink /> },
-  { path: getRouteLogout(), element: <Logout /> }
+export interface AppRouteCast {
+  path: string;
+  element: React.ReactNode;
+  isPrivate?: boolean;
+}
+
+export const routes: AppRouteCast[] = [
+  { path: getRouteMain(), element: <WeekPlan />, isPrivate: true },
+  { path: getRouteTodo(), element: <TodoPage />, isPrivate: true },
+  { path: getRouteResource(), element: <ResourcePage />, isPrivate: true },
+  { path: getRouteProfile(), element: <ProfilePage />, isPrivate: true },
+  { path: getRouteRepeat(), element: <RepeatPage />, isPrivate: true },
+  { path: getRouteHabit(), element: <Habits />, isPrivate: true },
+  { path: getRouteTreeResource(), element: <TreeResource />, isPrivate: true },
+  { path: getRouteLogin(), element: <AuthPage />, isPrivate: false },
+  { path: getRouteResourceLink(), element: <ResourceLink />, isPrivate: true },
+ // { path: getRouteLogout(), element: <Logout />, isPrivate: true }
   // { path: getRouteSetting(), element: <ResourceDetails /> },
   // { path: getRouteResourceDetails(), element: <ResourceDetails /> }
 ];

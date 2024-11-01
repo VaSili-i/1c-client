@@ -1,11 +1,23 @@
-import { Route, Routes, type RouteProps } from 'react-router-dom';
-import { routes } from 'app/provider/router/config/routeConfig';
+// AppRouter.tsx
+import { Route, Routes } from 'react-router-dom';
+import { type AppRouteCast, routes } from 'app/provider/router/config/routeConfig';
+import PrivateRoute from 'app/provider/PrivateRoute/PrivareRoure';
 import { type ReactElement } from 'react';
 
-function AppRouter(): ReactElement {
-  const getRoute = (route: RouteProps): ReactElement => (
-    <Route key={route.path} path={route.path} element={route.element} />
-  );
+interface IntAppRouter {
+  isAuthenticated: boolean;
+}
+
+function AppRouter({ isAuthenticated }: IntAppRouter): ReactElement {
+  const getRoute = (route: AppRouteCast): ReactElement => {
+    const { path, element, isPrivate } = route;
+
+    // Если маршрут защищён, оборачиваем его в PrivateRoute
+    const wrappedElement =
+      isPrivate === true ? <PrivateRoute isAuthenticated={isAuthenticated}>{element}</PrivateRoute> : element;
+
+    return <Route key={path} path={path} element={wrappedElement} />;
+  };
 
   return <Routes>{routes.map((route) => getRoute(route))}</Routes>;
 }
