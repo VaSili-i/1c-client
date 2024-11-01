@@ -38,7 +38,6 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
 
   const handleLogin = async (user: UserLogTp) => {
     try {
-      console.log(23434);
       await login(user).unwrap();
       // Обработка успешного входа
     } catch (error) {
@@ -56,7 +55,7 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
 
   return (
     <div className={joinClassName(cls.LoginFrom, {}, cls[disable])}>
-      <form className={cls.form}>
+      <div className={cls.form}>
         <h2 className={cls.title}>Авторизация</h2>
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
           <input required={true} className={cls.input} value={username} onChange={handleUsernameChange} />
@@ -70,13 +69,14 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
           <UserIcon className={cls.icon} />
         </div>
 
-        <Button
+        <button
           className={cls.btn}
           onClick={() => {
+            debugger;
             void handleLogin({ username, password });
           }}>
           Login
-        </Button>
+        </button>
         <div className={cls.toggleText}>
           <p>
             Нет аккаунта?
@@ -90,7 +90,7 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
             </AppLink>
           </p>
         </div>
-      </form>
+      </div>
       <VStack align={Items.END} className={joinClassName(cls.infoLogin)}>
         <h2>Welcome to login!</h2>
         <p></p>
