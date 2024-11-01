@@ -6,6 +6,8 @@ import { AppLink } from 'shared/ui/Link/AppLink';
 import { VStack } from 'shared/ui/Stack';
 import { Items } from 'shared/ui/Stack/stackConfig';
 import { type ReactElement } from 'react';
+import type { UserLogTp } from 'shared/types/entities/authTypes';
+import { useLoginMutation } from 'shared/api/general/AuthRtqQueryApi';
 
 interface RegisterFormProps {
   disableCls: boolean;
@@ -14,7 +16,15 @@ interface RegisterFormProps {
 
 export function RegistrationFrom({ disableCls, setDisableCls }: RegisterFormProps): ReactElement {
   const disable = disableCls ? 'disable' : '';
-
+  const [login, { data, isSuccess, isLoading, isError }] = useLoginMutation();
+  const handleLogin = async (user: UserLogTp) => {
+    try {
+      await login(user).unwrap();
+      // Обработка успешного входа
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
   return (
     <div className={joinClassName(cls.RegisterForm, {}, cls[disable])}>
       <form className={cls.form}>
@@ -37,7 +47,14 @@ export function RegistrationFrom({ disableCls, setDisableCls }: RegisterFormProp
           <UserIcon className={cls.icon} />
         </div>
 
-        <Button className={cls.btn}>Sing Up </Button>
+        <Button
+          className={cls.btn}
+          onClick={() => {
+            console.log(343);
+         //   void handleLogin({ username, password });
+          }}>
+          Sing Up
+        </Button>
         <div className={cls.toggleText}>
           <p>
             Already have an account?

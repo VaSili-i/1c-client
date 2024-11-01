@@ -38,6 +38,7 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
 
   const handleLogin = async (user: UserLogTp) => {
     try {
+      console.log(23434);
       await login(user).unwrap();
       // Обработка успешного входа
     } catch (error) {
@@ -55,7 +56,7 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
 
   return (
     <div className={joinClassName(cls.LoginFrom, {}, cls[disable])}>
-      <form className={cls.form} onSubmit={handleSubmit}>
+      <form className={cls.form}>
         <h2 className={cls.title}>Авторизация</h2>
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
           <input required={true} className={cls.input} value={username} onChange={handleUsernameChange} />
