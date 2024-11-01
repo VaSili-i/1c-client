@@ -11,12 +11,7 @@ function App(): ReactElement {
   const isAuth = isAuthenticated();
 
   return (
-    <MainLayout
-      header={isAuth ? <Header /> : null}
-      sidebar={isAuth ? <Sidebar /> : null}
-      main={<AppRouter isAuthenticated={isAuth} />}
-      rightbar={<div></div>}
-    />
+    <MainLayout header={<Header />} sidebar={<Sidebar />} main={<AppRouter isAuthenticated={isAuth} />} rightbar={<div></div>} />
   );
 }
 
