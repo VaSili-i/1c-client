@@ -14,6 +14,7 @@ export function getWebpackConfig(options: BuildOptions): webpack.Configuration {
     output: {
       filename: '[name].[contenthash].js',
       path: paths.build,
+      publicPath: '/', // обязательно для Vercel
       clean: true
     },
     plugins: getPlugins(options),
