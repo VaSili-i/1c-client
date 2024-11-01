@@ -8,7 +8,16 @@ export const isAuthenticated = (): boolean => {
   return Boolean(localStorage.getItem('token')); // Проверка наличия токена
 };
 function App(): ReactElement {
-  return <MainLayout header={<Header />} sidebar={<Sidebar />} main={<AppRouter isAuthenticated={isAuthenticated()} />} rightbar={<div></div>} />;
+  const isAuth = isAuthenticated();
+
+  return (
+    <MainLayout
+      header={isAuth ? <Header /> : null}
+      sidebar={isAuth ? <Sidebar /> : null}
+      main={<AppRouter isAuthenticated={isAuth} />}
+      rightbar={<div></div>}
+    />
+  );
 }
 
 export default App;

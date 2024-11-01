@@ -3,10 +3,10 @@ import cls from './MainLayout.module.scss';
 import { VStack } from 'shared/ui/Stack';
 
 interface MainLayoutProps {
-  header: ReactElement;
-  sidebar: ReactElement;
-  main: ReactElement;
-  rightbar: ReactElement;
+  header: ReactElement | null;
+  sidebar: ReactElement | null;
+  main: ReactElement | null;
+  rightbar: ReactElement | null;
 }
 
 export function MainLayout(props: MainLayoutProps): ReactElement {
