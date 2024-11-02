@@ -5,9 +5,10 @@ import { TodoCardDays } from 'entities/TodoCardDays/ui/TodoCardDays/TodoCardDays
 import RightArrow from 'shared/assets/icon/right-arrow.svg';
 import { type ReactElement, useEffect, useRef, useState } from 'react';
 import { useAddTodoGroupMutation, useGetAllTodoByTypeQuery } from 'entities/TodoCardDays/service/TodoRtqQueryApi';
-import { type TodoCompleteTp, type TodoTypeTp } from 'shared/types/entities/todoTypes';
+import { type TodoCompleteTp } from 'shared/types/entities/todoTypes';
 import Plus from 'shared/assets/icon/plus.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { DateTime } from 'luxon';
 
 export function TodoEveryDay(): ReactElement {
   const { data: todoEveryDayList } = useGetAllTodoByTypeQuery('EVERY_DAY');
@@ -27,7 +28,7 @@ export function TodoEveryDay(): ReactElement {
     await createTodo({
       name: '',
       todoType: { id: '1' },
-      timeCreate: ''
+      timeCreate: DateTime.now().toString()
     });
 
     if (todoEveryDayList != null) {

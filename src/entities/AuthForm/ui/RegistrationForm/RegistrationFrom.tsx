@@ -5,9 +5,9 @@ import { Button } from 'shared/ui/Button/Button';
 import { AppLink } from 'shared/ui/Link/AppLink';
 import { VStack } from 'shared/ui/Stack';
 import { Items } from 'shared/ui/Stack/stackConfig';
-import { type ReactElement } from 'react';
-import type { UserLogTp } from 'shared/types/entities/authTypes';
-import { useLoginMutation } from 'shared/api/general/AuthRtqQueryApi';
+import { type ReactElement, useState } from 'react';
+import type { UserTp } from 'shared/types/entities/authTypes';
+import { useRegistrationMutation } from 'shared/api/general/AuthRtqQueryApi';
 
 interface RegisterFormProps {
   disableCls: boolean;
@@ -16,13 +16,29 @@ interface RegisterFormProps {
 
 export function RegistrationFrom({ disableCls, setDisableCls }: RegisterFormProps): ReactElement {
   const disable = disableCls ? 'disable' : '';
-  const [login, { data, isSuccess, isLoading, isError }] = useLoginMutation();
-  const handleLogin = async (user: UserLogTp) => {
+  const [registration, { data, isSuccess, isLoading, isError }] = useRegistrationMutation();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleLogin = async (user: UserTp) => {
     try {
-      await login(user).unwrap();
+      await registration(user).unwrap();
       // Обработка успешного входа
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Registration failed:', error);
     }
   };
   return (
@@ -30,19 +46,19 @@ export function RegistrationFrom({ disableCls, setDisableCls }: RegisterFormProp
       <form className={cls.form}>
         <h2 className={cls.title}>Регистрация</h2>
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
-          <input required={true} className={cls.input} />
+          <input value={username} onChange={handleUsernameChange} required={true} className={cls.input} />
           <label className={cls.label}>Имя пользователя</label>
           <UserIcon className={cls.icon} />
         </div>
 
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
-          <input required={true} className={cls.input} />
+          <input value={email} onChange={handleEmailChange} required={true} className={cls.input} />
           <label className={cls.label}>Почта</label>
           <UserIcon className={cls.icon} />
         </div>
 
         <div className={joinClassName(cls.inputBox, {}, cls.animation)}>
-          <input required={true} className={cls.input} />
+          <input value={password} onChange={handlePasswordChange} required={true} className={cls.input} />
           <label className={cls.label}>Пароль</label>
           <UserIcon className={cls.icon} />
         </div>
@@ -50,8 +66,7 @@ export function RegistrationFrom({ disableCls, setDisableCls }: RegisterFormProp
         <Button
           className={cls.btn}
           onClick={() => {
-            console.log(343);
-         //   void handleLogin({ username, password });
+            void handleLogin({ username, password, email });
           }}>
           Sing Up
         </Button>

@@ -1,5 +1,5 @@
 import { rtkQueryApi } from 'shared/api/config/rtkQuery';
-import { type UserLogTp } from 'shared/types/entities/authTypes';
+import { type UserLogTp, type UserTp } from 'shared/types/entities/authTypes';
 
 const habitRtqQueryApi = rtkQueryApi.injectEndpoints({
   endpoints: (build) => ({
@@ -10,8 +10,16 @@ const habitRtqQueryApi = rtkQueryApi.injectEndpoints({
         body: user
       }),
       invalidatesTags: ['user']
+    }),
+    registration: build.mutation<any, UserTp>({
+      query: (user) => ({
+        method: 'POST',
+        url: 'auth/register',
+        body: user
+      }),
+      invalidatesTags: ['user']
     })
   })
 });
 
-export const { useLoginMutation } = habitRtqQueryApi;
+export const { useLoginMutation, useRegistrationMutation } = habitRtqQueryApi;

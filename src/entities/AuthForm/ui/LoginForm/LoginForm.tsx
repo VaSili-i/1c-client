@@ -27,12 +27,6 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Username:', username);
-    console.log('Password:', password);
-    // Здесь можно добавить логику для обработки формы
-  };
 
   const [login, { data, isSuccess, isLoading, isError }] = useLoginMutation();
 
@@ -68,15 +62,13 @@ export function LoginForm({ disableCls, setDisableCls }: LoginFormProps): ReactE
           <label className={cls.label}>Пароль</label>
           <UserIcon className={cls.icon} />
         </div>
-
-        <button
+        <Button
           className={cls.btn}
           onClick={() => {
-            debugger;
             void handleLogin({ username, password });
           }}>
           Login
-        </button>
+        </Button>
         <div className={cls.toggleText}>
           <p>
             Нет аккаунта?

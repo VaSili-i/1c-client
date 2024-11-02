@@ -2,7 +2,7 @@ export interface UserTp {
   readonly id?: string;
   readonly username: string;
   readonly password: string;
-  readonly email: number;
+  readonly email: string;
 }
 
 export interface UserLogTp {
