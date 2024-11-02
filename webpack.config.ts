@@ -16,7 +16,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     mode: env.mode,
     port: env.port ?? 3030,
     isDev: false,
-    apiUrl: 'https://1c-server.vercel.app/',
+    apiUrl: 'http://localhost:3000/',
     title: 'ComplexProject'
   };
 

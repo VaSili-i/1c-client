@@ -20,7 +20,7 @@ export function InputAddTodo({ text, changeText, idGroup }: AddTodoProps): React
   const [addTodo] = useAddTodoMutation();
 
   const addTodoAction = async (): Promise<void> => {
-    await addTodo({ todo: { name: text, isDone: false, dataCreate: DateTime.local().toFormat('dd.MM.yyyy') } });
+    await addTodo({ name: text, isDone: false, dataCreate: DateTime.local().toFormat('dd.MM.yyyy') });
   };
 
   return (

@@ -41,3 +41,4 @@ jest.setup.js
 *.sln
 *.sw?
 .vercel
+webpack.config.ts
