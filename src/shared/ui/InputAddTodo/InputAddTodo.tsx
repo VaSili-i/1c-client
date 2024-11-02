@@ -4,6 +4,7 @@ import { HStack } from 'shared/ui/Stack';
 import AddTodoIcon from 'shared/assets/icon/right-circle.svg';
 import { useAddTodoMutation } from 'entities/TodoCardDays/service/TodoRtqQueryApi';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { DateTime } from 'luxon';
 
 interface AddTodoProps {
   text: string;
@@ -19,7 +20,7 @@ export function InputAddTodo({ text, changeText, idGroup }: AddTodoProps): React
   const [addTodo] = useAddTodoMutation();
 
   const addTodoAction = async (): Promise<void> => {
-    await addTodo({ todo: { name: text, isDone: false }, todoComplete: { id: idGroup } });
+    await addTodo({ todo: { name: text, isDone: false, dataCreate: DateTime.local().toFormat('dd.MM.yyyy') } });
   };
 
   return (
