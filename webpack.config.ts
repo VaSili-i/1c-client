@@ -1,4 +1,4 @@
-import { type BuildEnv, type BuildOptions, type BuildPath } from './config/webpack/types/type';
+import { type BuildEnv, BuildMode, type BuildOptions, type BuildPath } from './config/webpack/types/type';
 import type webpack from 'webpack';
 import * as path from 'path';
 import { getWebpackConfig } from './config/webpack/getWebpackConfig';
@@ -10,13 +10,14 @@ export default (env: BuildEnv): webpack.Configuration => {
     html: path.resolve(__dirname, 'public', 'index.html'),
     src: path.resolve(__dirname, 'src')
   };
+  const isDev = env.mode == BuildMode.DEVELOPMENT;
 
   const options: BuildOptions = {
     paths,
     mode: env.mode,
     port: env.port ?? 3030,
-    isDev: false,
-    apiUrl: 'https://1c-server.vercel.app/',
+    isDev,
+    apiUrl: isDev ? 'http://localhost:3000/' : '1c-server.vercel.app',
     title: 'ComplexProject'
   };
 

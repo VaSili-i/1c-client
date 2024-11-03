@@ -17,11 +17,9 @@ export const TodoCardGlobal = memo(({ todoComplete }: TodoCardProps): ReactEleme
 
   return (
     <Card className={cls.padding}>
-      <h4 className={cls.title}>
-        {`${todoComplete.name} / ${getTimeFormat(todoComplete.timeCreate)}`}
-      </h4>
-      <InputAddTodo idGroup={todoComplete?.id!} text={text} changeText={setText} />
-      <TodoList todoList={todoComplete.todoList} />
+      <h4 className={cls.title}>{`${todoComplete.name} / ${getTimeFormat(todoComplete.timeCreate)}`}</h4>
+      <InputAddTodo idGroup={todoComplete?._id!} text={text} changeText={setText} />
+      <TodoList todoList={todoComplete.todos} />
     </Card>
   );
 });

@@ -17,7 +17,7 @@ export interface TodoGroupTp extends Omit<IdNameCodeTimeCreate, 'code'> {
   todoType: TodoTypeTp;
 }
 
-export interface TodoTp extends Pick<IdNameCodeTimeCreate, 'id' | 'name'> {
+export interface TodoTp extends Pick<IdNameCodeTimeCreate, 'id' | '_id' | 'name'> {
   readonly timeDone?: string;
   isDone: boolean;
   priority?: LevelTp;
@@ -31,14 +31,14 @@ export interface TodoAddTp {
 export interface TodoTypeTp extends Omit<IdNameCodeTimeCreate, 'timeCreate'> {}
 
 export interface TodoCompleteAddTp extends Pick<IdNameCodeTimeCreate, 'id' | 'name'> {
-  readonly todoType: { id: string };
+  readonly type: string;
   readonly timeCreate: string;
 }
 
-export interface TodoCompleteTp extends Pick<IdNameCodeTimeCreate, 'id' | 'name'> {
-  readonly todoType: TodoTypeTp;
+export interface TodoCompleteTp extends Pick<IdNameCodeTimeCreate, '_id' | 'name'> {
+  readonly type: TodoTypeTp;
   readonly timeCreate: string;
-  todoList: TodoTp[];
+  todos: TodoTp[];
 }
 
 export interface TodoItemType {

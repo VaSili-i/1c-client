@@ -13,8 +13,8 @@ export function TodoGlobal(): ReactElement {
 
   const createTodoAction = async (): Promise<void> => {
     await createTodo({
-      name: '',
-      todoType: { id: '2' },
+      name: 'Задача без описания',
+      type: 'global',
       timeCreate: ''
     });
   };
@@ -24,7 +24,7 @@ export function TodoGlobal(): ReactElement {
       <Card>
         <Icon isClickable onClickAct={createTodoAction} SvgIcon={Plus} clsName={cls.icon} />
       </Card>
-      {todoGlobalList?.map((todo: TodoCompleteTp) => <TodoCardGlobal key={todo.id} todoComplete={todo} />)}
+      {todoGlobalList?.map((todo: TodoCompleteTp) => <TodoCardGlobal key={todo._id} todoComplete={todo} />)}
     </>
   );
 }

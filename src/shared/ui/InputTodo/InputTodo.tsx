@@ -26,7 +26,7 @@ export function InputTodo({ todo }: TodoInputProps): ReactElement {
         />
         <input type={'text'} value={todo.name} className={cls.text} />
       </HStack>
-      <Button onClick={async () => await deleteTodo(todo.id ?? '')} typeButton={'circle'}>
+      <Button onClick={async () => await deleteTodo(todo._id ?? '')} typeButton={'circle'}>
         <CrossIcon className={cls.icon} />
       </Button>
     </HStack>

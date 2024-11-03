@@ -7,12 +7,12 @@ import { type ReactElement, useEffect, useRef, useState } from 'react';
 import { useAddTodoGroupMutation, useGetAllTodoByTypeQuery } from 'entities/TodoCardDays/service/TodoRtqQueryApi';
 import { type TodoCompleteTp } from 'shared/types/entities/todoTypes';
 import Plus from 'shared/assets/icon/plus.svg';
-import { Icon } from 'shared/ui/Icon/Icon';
 import { DateTime } from 'luxon';
+import { Icon } from 'shared/ui/Icon/Icon';
 
 export function TodoEveryDay(): ReactElement {
   const { data: todoEveryDayList } = useGetAllTodoByTypeQuery('EVERY_DAY');
-  const [createTodo] = useAddTodoGroupMutation();
+  const [createGroupTodo] = useAddTodoGroupMutation();
 
   const [todo, setTodo] = useState<TodoCompleteTp | undefined>();
   const indexTodo = useRef(0);
@@ -25,9 +25,9 @@ export function TodoEveryDay(): ReactElement {
   }, [todoEveryDayList]);
 
   const createTodoAction = async (): Promise<void> => {
-    await createTodo({
-      name: '',
-      todoType: { id: '1' },
+    await createGroupTodo({
+      name: 'Задача без описания',
+      type: 'everyDay',
       timeCreate: DateTime.now().toString()
     });
 
@@ -55,7 +55,7 @@ export function TodoEveryDay(): ReactElement {
       <HStack max className={cls.blockInput}>
         <Icon isClickable onClickAct={nextTodo} SvgIcon={LeftArrow} clsName={cls.imageArrow} />
         {todo != null ? (
-          <TodoCardDays key={todo.id} className={cls.blockInput} todo={todo} />
+          <TodoCardDays key={todo._id} className={cls.blockInput} todo={todo} />
         ) : (
           <Icon isClickable onClickAct={createTodoAction} SvgIcon={Plus} clsName={cls.icon} />
         )}

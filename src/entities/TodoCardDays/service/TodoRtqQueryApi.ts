@@ -4,25 +4,26 @@ import { type TodoCompleteAddTp, type TodoCompleteTp, type TodoTp } from 'shared
 const todoRtqQueryApi = rtkQueryApi.injectEndpoints({
   endpoints: (build) => ({
     getAllTodoByType: build.query<TodoCompleteTp[], string>({
-      query: (typeCode: string) => ({
-        url: 'todo'
+      query: (id: string) => ({
+        url: 'todo/groups/list'
       }),
       providesTags: ['todo']
     }),
     addTodoGroup: build.mutation<string, TodoCompleteAddTp>({
       query: (todo: TodoCompleteAddTp) => ({
-        url: 'todo/create',
+        url: 'todo/groups',
         method: 'POST',
         body: todo
       }),
       invalidatesTags: ['todo']
     }),
     addTodo: build.mutation<string, any>({
-      query: (todo: any) => ({
+      query: ({ todo, idGroup }) => ({
         // todo:  переделать типы
         url: 'todo',
         method: 'POST',
-        body: todo
+        body: todo,
+        params: { idGroup }
       }),
       invalidatesTags: ['todo']
     }),
@@ -30,15 +31,16 @@ const todoRtqQueryApi = rtkQueryApi.injectEndpoints({
       query: (todo: TodoTp) => ({
         url: 'todo',
         method: 'PUT',
-        body: todo
+        body: todo,
+        params: { id: todo._id }
       }),
       invalidatesTags: ['todo']
     }),
     deleteTodo: build.mutation<string, string>({
-      query: (idTodo: string) => ({
+      query: (id: string) => ({
         url: 'todo',
         method: 'DELETE',
-        params: { idTodo }
+        params: { id }
       }),
       invalidatesTags: ['todo']
     })

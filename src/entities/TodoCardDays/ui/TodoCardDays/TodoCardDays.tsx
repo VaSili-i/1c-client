@@ -19,8 +19,8 @@ export const TodoCardDays = memo(({ todo }: TodoCardDaysProps): ReactElement => 
   return (
     <Card justify={Content.START} className={cls.TodoCardDays}>
       <h4>{getTimeFormat(todo.timeCreate)}</h4>
-      <InputAddTodo idGroup={todo.id ?? ''} text={text} changeText={setText} />
-      <TodoList todoList={todo.todoList} />
+      <InputAddTodo idGroup={todo._id ?? ''} text={text} changeText={setText} />
+      <TodoList todoList={todo.todos} />
     </Card>
   );
 });
