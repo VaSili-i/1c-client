@@ -1,7 +1,12 @@
 .icon {
   width: 150px;
-  height: 150px;
+  height: auto;
   padding: 8px;
   fill: var(--main-color);
   transition: all var(--time-much) ease-in-out;
+}
+
+.padding {
+  padding: 25px;
+  height: auto;
 }

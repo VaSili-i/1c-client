@@ -16,3 +16,17 @@
 .timeText {
   color: var(--secondary-color);
 }
+
+.iconNav {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  padding: 10px 0;
+  cursor: pointer;
+  fill: var(--main-color);
+
+  &:hover {
+    border: solid 1px var(--main-color);
+    border-radius: 10%;
+  }
+}

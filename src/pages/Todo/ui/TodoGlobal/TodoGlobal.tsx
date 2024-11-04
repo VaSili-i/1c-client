@@ -21,7 +21,7 @@ export function TodoGlobal(): ReactElement {
 
   return (
     <>
-      <Card>
+      <Card className={cls.padding}>
         <Icon isClickable onClickAct={createTodoAction} SvgIcon={Plus} clsName={cls.icon} />
       </Card>
       {todoGlobalList?.map((todo: TodoCompleteTp) => <TodoCardGlobal key={todo._id} todoComplete={todo} />)}
