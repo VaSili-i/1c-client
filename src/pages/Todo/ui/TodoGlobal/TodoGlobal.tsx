@@ -1,14 +1,14 @@
 import { Card } from 'shared/ui/deprecated/Card/Card';
 import Plus from 'shared/assets/icon/plus.svg';
 import cls from './TodoGlobal.module.scss';
-import { type TodoCompleteTp } from 'shared/types/entities/todoTypes';
+import { type TodoCompleteTp, TypeTodoEnum } from 'shared/types/entities/todoTypes';
 import { TodoCardGlobal } from 'entities/TodoCardGlobal';
 import { useAddTodoGroupMutation, useGetAllTodoByTypeQuery } from 'entities/TodoCardDays/service/TodoRtqQueryApi';
 import { type ReactElement } from 'react';
 import { Icon } from 'shared/ui/Icon/Icon';
 
 export function TodoGlobal(): ReactElement {
-  const { data: todoGlobalList } = useGetAllTodoByTypeQuery('DAY');
+  const { data: todoGlobalList } = useGetAllTodoByTypeQuery(TypeTodoEnum.GLOBAL);
   const [createTodo] = useAddTodoGroupMutation();
 
   const createTodoAction = async (): Promise<void> => {

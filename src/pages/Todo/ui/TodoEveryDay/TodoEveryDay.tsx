@@ -5,24 +5,24 @@ import { TodoCardDays } from 'entities/TodoCardDays/ui/TodoCardDays/TodoCardDays
 import RightArrow from 'shared/assets/icon/right-arrow.svg';
 import { type ReactElement, useEffect, useRef, useState } from 'react';
 import { useAddTodoGroupMutation, useGetAllTodoByTypeQuery } from 'entities/TodoCardDays/service/TodoRtqQueryApi';
-import { type TodoCompleteTp } from 'shared/types/entities/todoTypes';
+import { type TodoCompleteTp, TypeTodoEnum } from 'shared/types/entities/todoTypes';
 import Plus from 'shared/assets/icon/plus.svg';
 import { DateTime } from 'luxon';
 import { Icon } from 'shared/ui/Icon/Icon';
-import { joinClassName } from 'shared/lib/joinClassName/joinClassName';
 import Hammer from 'hammerjs';
 
 export function TodoEveryDay(): ReactElement {
-  const { data: todoEveryDayList } = useGetAllTodoByTypeQuery('EVERY_DAY');
+  const { data: todoEveryDayList } = useGetAllTodoByTypeQuery(TypeTodoEnum.EVERY_DAY);
   const [createGroupTodo] = useAddTodoGroupMutation();
 
   const [todo, setTodo] = useState<TodoCompleteTp | undefined>();
   const indexTodo = useRef(0);
+  const arrowRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect((): void => {
-    if (todoEveryDayList != null) {
+  useEffect(() => {
+    if (todoEveryDayList != null && todoEveryDayList.length > 0) {
       indexTodo.current = todoEveryDayList.length - 1;
-      setTodo(todoEveryDayList[todoEveryDayList.length - 1]);
+      setTodo({ ...todoEveryDayList[todoEveryDayList.length - 1] }); // Копируем объект, чтобы React отреагировал
     }
   }, [todoEveryDayList]);
 
@@ -33,45 +33,58 @@ export function TodoEveryDay(): ReactElement {
       timeCreate: DateTime.now().toString()
     });
 
-    if (todoEveryDayList != null) {
-      setTodo(todoEveryDayList[todoEveryDayList.length - 1]);
+    if (todoEveryDayList != null && todoEveryDayList.length > 0) {
+      setTodo({ ...todoEveryDayList[todoEveryDayList.length - 1] });
     }
   };
 
   const nextTodo = (): void => {
-    console.log('swiper');
-    if (todoEveryDayList != null && indexTodo.current < todoEveryDayList.length) {
-      setTodo(todoEveryDayList[++indexTodo.current]);
+    if (todoEveryDayList != null && indexTodo.current < todoEveryDayList.length - 1) {
+      indexTodo.current += 1;
+      setTodo({ ...todoEveryDayList[indexTodo.current] }); // Создаем новый объект для обновления состояния
     } else {
       setTodo(undefined);
+      console.log('Достигнут конец списка');
     }
   };
 
   const prevTodo = (): void => {
-    console.log('swipel');
     if (todoEveryDayList != null && indexTodo.current > 0) {
-      setTodo(todoEveryDayList[--indexTodo.current]);
+      indexTodo.current -= 1;
+      setTodo({ ...todoEveryDayList[indexTodo.current] }); // Создаем новый объект для обновления состояния
+    } else {
+      console.log('Достигнуто начало списка');
     }
   };
 
-  const arrowRef = useRef(null);
-
   useEffect(() => {
-    if (arrowRef?.current != null) {
-      const arrow = new Hammer(arrowRef.current);
+    if (arrowRef.current != null) {
+      const hammer = new Hammer(arrowRef.current);
 
-      arrow.on('swiperight', nextTodo);
-      arrow.on('swipeleft', prevTodo);
+      hammer.get('swipe').set({
+        direction: Hammer.DIRECTION_HORIZONTAL,
+        velocity: 0.1,
+        threshold: 1
+      });
+
+      hammer.on('swipeleft', () => {
+        prevTodo();
+      });
+
+      hammer.on('swiperight', () => {
+        nextTodo();
+      });
 
       return () => {
-        arrow.off('swiperight', nextTodo); // Удаляем обработчик при размонтировании
-        arrow.off('swipeleft', prevTodo); // Удаляем обработчик при размонтировании
-        arrow.destroy(); // Уничтожаем инстанс Hammer
+        hammer.off('swipeleft');
+        hammer.off('swiperight');
+        hammer.destroy();
       };
     }
-  }, [arrowRef]);
+  }, [arrowRef, todoEveryDayList]);
+
   return (
-    <div ref={arrowRef} className={cls.EveryDay}>
+    <div ref={arrowRef} className={cls.EveryDay} style={{ touchAction: 'none', display: 'block' }}>
       <HStack max className={cls.blockInput}>
         <Icon isClickable onClickAct={nextTodo} SvgIcon={LeftArrow} clsName={cls.imageArrow} />
         {todo != null ? (

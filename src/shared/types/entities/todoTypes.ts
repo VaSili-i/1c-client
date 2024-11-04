@@ -45,3 +45,8 @@ export interface TodoItemType {
   isDone: boolean;
   text: string;
 }
+
+export enum TypeTodoEnum {
+  EVERY_DAY = 'everyDay',
+  GLOBAL = 'global'
+}
