@@ -11,13 +11,14 @@ export default (env: BuildEnv): webpack.Configuration => {
     src: path.resolve(__dirname, 'src')
   };
   const isDev = env.mode == BuildMode.DEVELOPMENT;
+  const apiUrl = isDev ? 'http://localhost:3000/' : '1c-server.vercel.app';
 
   const options: BuildOptions = {
     paths,
     mode: env.mode,
     port: env.port ?? 3030,
     isDev,
-    apiUrl: isDev ? 'http://localhost:3000/' : '1c-server.vercel.app',
+    apiUrl,
     title: 'ComplexProject'
   };
 
