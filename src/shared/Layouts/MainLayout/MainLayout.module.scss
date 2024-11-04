@@ -53,6 +53,34 @@
   display: none; /* Скрываем правую панель на мобильных */
 }
 
+/* Адаптивные стили для экранов до 1024px */
+@media (max-width: 1024px) {
+  .MainLayout {
+    grid-template-columns: 1fr; /* Убираем боковые панели */
+    grid-template-rows: 60px 1fr;
+  }
+
+  .header {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+  }
+
+  .sidebar {
+    display: none; /* Скрываем sidebar на мобильных */
+  }
+
+  .main {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    padding: 0 10px; /* Уменьшаем отступы */
+    height: calc(100vh - 60px);
+  }
+
+  .rightbar {
+    display: none !important;
+  }
+}
+
 /* Адаптивные стили для экранов до 768px */
 @media (max-width: 768px) {
   .MainLayout {
@@ -72,14 +100,26 @@
   .main {
     grid-column: 1 / span 1;
     grid-row: 2 / span 1;
-    padding: 0 10px;
+    padding: 0 5px; /* Ещё больше уменьшаем отступы */
     height: calc(100vh - 60px);
   }
 
   .rightbar {
     display: none !important;
   }
+
   body {
     background-color: pink; /* Временный цвет фона для проверки */
+  }
+}
+
+/* Адаптивные стили для экранов до 480px */
+@media (max-width: 480px) {
+  .header {
+    font-size: 16px; /* Уменьшаем размер шрифта для заголовка */
+  }
+
+  .main {
+    padding: 0 5px; /* Минимальные отступы для мобильных */
   }
 }
