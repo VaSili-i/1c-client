@@ -39,6 +39,7 @@ export function TodoEveryDay(): ReactElement {
   };
 
   const nextTodo = (): void => {
+    console.log('swiper');
     if (todoEveryDayList != null && indexTodo.current < todoEveryDayList.length) {
       setTodo(todoEveryDayList[++indexTodo.current]);
     } else {
@@ -47,6 +48,7 @@ export function TodoEveryDay(): ReactElement {
   };
 
   const prevTodo = (): void => {
+    console.log('swipel');
     if (todoEveryDayList != null && indexTodo.current > 0) {
       setTodo(todoEveryDayList[--indexTodo.current]);
     }
@@ -58,11 +60,16 @@ export function TodoEveryDay(): ReactElement {
     if (arrowRef?.current != null) {
       const arrow = new Hammer(arrowRef.current);
 
-      arrow.on('swipeleft', nextTodo);
-      arrow.on('swiperight', prevTodo);
-    }
-  });
+      arrow.on('swiperight', nextTodo);
+      arrow.on('swipeleft', prevTodo);
 
+      return () => {
+        arrow.off('swiperight', nextTodo); // Удаляем обработчик при размонтировании
+        arrow.off('swipeleft', prevTodo); // Удаляем обработчик при размонтировании
+        arrow.destroy(); // Уничтожаем инстанс Hammer
+      };
+    }
+  }, [arrowRef]);
   return (
     <div ref={arrowRef} className={cls.EveryDay}>
       <HStack max className={cls.blockInput}>
