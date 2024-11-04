@@ -29,6 +29,7 @@ export function getPlugins({
   //   minRatio: 0.8,
   // });
 
+  console.log(apiUrl);
   const definePlugin = new webpack.DefinePlugin({
     __IS_DEV__: JSON.stringify(isDev),
     __API__: JSON.stringify(apiUrl)
