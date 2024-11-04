@@ -9,6 +9,8 @@ import { type TodoCompleteTp } from 'shared/types/entities/todoTypes';
 import Plus from 'shared/assets/icon/plus.svg';
 import { DateTime } from 'luxon';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { joinClassName } from 'shared/lib/joinClassName/joinClassName';
+import Hammer from 'hammerjs';
 
 export function TodoEveryDay(): ReactElement {
   const { data: todoEveryDayList } = useGetAllTodoByTypeQuery('EVERY_DAY');
@@ -50,8 +52,19 @@ export function TodoEveryDay(): ReactElement {
     }
   };
 
+  const arrowRef = useRef(null);
+
+  useEffect(() => {
+    if (arrowRef?.current != null) {
+      const arrow = new Hammer(arrowRef.current);
+
+      arrow.on('swipeleft', nextTodo);
+      arrow.on('swiperight', prevTodo);
+    }
+  });
+
   return (
-    <div className={cls.EveryDay}>
+    <div ref={arrowRef} className={cls.EveryDay}>
       <HStack max className={cls.blockInput}>
         <Icon isClickable onClickAct={nextTodo} SvgIcon={LeftArrow} clsName={cls.imageArrow} />
         {todo != null ? (

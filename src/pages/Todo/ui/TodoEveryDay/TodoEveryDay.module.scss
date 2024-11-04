@@ -33,3 +33,11 @@
   transition: all var(--time-much) ease-in-out;
   fill: var(--main-color);
 }
+
+
+/* Адаптивные стили для экранов до 480px */
+@media (max-width: 480px) {
+  .imageArrow {
+    display: none;
+  }
+}
