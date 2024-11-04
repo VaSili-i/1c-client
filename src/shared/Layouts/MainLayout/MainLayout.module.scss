@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: minmax(60px, min-content) 1fr minmax(0, min-content);
   grid-template-rows: 60px 1fr;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -24,18 +24,12 @@
   grid-row: 2 / span 1;
   overflow-y: auto;
   height: calc(100vh - 60px);
-  scrollbar-width: thin; /* "thin" or "auto" */
-  overflow-y: auto;
-
-  /* For WebKit (Chrome, Safari) */
-  scrollbar-width: thin; /* "thin" or "auto" */
+  scrollbar-width: thin; /* For Firefox */
   scrollbar-color: #7ca1c7 #030c25; /* thumb and track color */
 }
 
-
-
 .main::-webkit-scrollbar {
-  width: 12px; /* Adjust the width of the scrollbar */
+  width: 12px;
 }
 
 .main::-webkit-scrollbar-thumb {
@@ -53,17 +47,39 @@
   display: none;
 }
 
-/* For Firefox */
-.main {
-  scrollbar-width: thin; /* "thin" or "auto" */
-}
-
-.main::-moz-scrollbar-upbutton,
-.main::-moz-scrollbar-downbutton {
-  display: none;
-}
-
 .rightbar {
-  grid-column: 3 / 1 span;
-  grid-row: 3 / 1 span;
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
+  display: none; /* Скрываем правую панель на мобильных */
+}
+
+/* Адаптивные стили для экранов до 768px */
+@media (max-width: 768px) {
+  .MainLayout {
+    grid-template-columns: 1fr; /* Убираем боковые панели */
+    grid-template-rows: 60px 1fr;
+  }
+
+  .header {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+  }
+
+  .sidebar {
+    display: none; /* Скрываем sidebar на мобильных */
+  }
+
+  .main {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    padding: 0 10px;
+    height: calc(100vh - 60px);
+  }
+
+  .rightbar {
+    display: none !important;
+  }
+  body {
+    background-color: pink; /* Временный цвет фона для проверки */
+  }
 }
