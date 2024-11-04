@@ -11,7 +11,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     src: path.resolve(__dirname, 'src')
   };
   const isDev = env.mode == BuildMode.DEVELOPMENT;
-  const apiUrl = isDev ? 'http://localhost:3000/' : '1c-server.vercel.app';
+  const apiUrl = isDev ? 'http://localhost:3000/' : 'http://1c-server.vercel.app';
 
   const options: BuildOptions = {
     paths,
