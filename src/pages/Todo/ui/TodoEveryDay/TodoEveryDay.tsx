@@ -58,7 +58,9 @@ export function TodoEveryDay(): ReactElement {
   };
 
   useEffect(() => {
-    if (arrowRef.current != null) {
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+    if (arrowRef.current != null && isTouchDevice) {
       const hammer = new Hammer(arrowRef.current);
 
       hammer.get('swipe').set({
