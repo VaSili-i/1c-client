@@ -22,7 +22,7 @@ import {
   MenuList
 } from '@chakra-ui/react';
 import { FiHome, FiTrendingUp, FiCompass, FiStar, FiSettings, FiMenu, FiBell, FiChevronDown } from 'react-icons/fi';
-import { type IconType } from 'react-icons';
+import { IconBaseProps, type IconType } from 'react-icons';
 import { memo } from 'react';
 import { sidebarNavList } from 'app/provider/nav/config/sidebarNavList';
 import { AppLink } from 'shared/ui/Link/AppLink';
@@ -71,7 +71,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       </Flex>
 
       {sidebarNavList.map((link) => (
-        <NavItem key={link.title} Icon={link.Icon} name={link.title} path={link.to} />
+        <NavItem key={link.title} Icon={link.Icon as (props: IconBaseProps) => JSX.Element} name={link.title} path={link.to} />
       ))}
     </Box>
   );
