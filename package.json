@@ -8,7 +8,7 @@
     "startProd": "webpack serve --env port=3333 mode=production",
     "build:prod": "webpack --env port=3333 mode=production",
     "build:dev": "webpack --env mode=development",
-    "build": "tsc --noEmit || next build",
+    "build": "webpack --mode production",
     "lint:ts": "eslint \"./src/**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lintES:fix": "eslint --fix",
