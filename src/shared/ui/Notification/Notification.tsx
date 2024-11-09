@@ -1,5 +1,4 @@
 import React, { type ReactElement } from 'react';
-import { Button, notification } from 'antd';
 
 const key = 'updatable';
 
@@ -9,21 +8,11 @@ interface NotificationProps {
 }
 
 export const Notification = ({ message, description }: NotificationProps): ReactElement => {
-  const [api, contextHolder] = notification.useNotification();
-  const openNotification = (): void => {
-    api.open({
-      key,
-      message,
-      description
-    });
-  };
+  //const [api, contextHolder] = notification.useNotification();
 
   return (
     <>
-      {contextHolder}
-      <Button type="primary" onClick={openNotification}>
-        Importen
-      </Button>
+      <button>Importen</button>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { memo, type ReactElement, type SetStateAction, useState } from 'react';
 import { VStack } from 'shared/ui/Stack';
-import MDEditor from '@uiw/react-md-editor';
+
 import cls from './MainPage.module.scss';
 import { JustItms } from 'shared/ui/Stack/stackConfig';
 
@@ -30,8 +30,7 @@ function MainPage(): ReactElement {
 
   return (
     <VStack max justIt={JustItms.START} className={cls.MainPage}>
-      <MDEditor className={cls.mdEditor} value={value} onChange={act} />
-      <MDEditor.Markdown className={cls.mdText} source={value} />
+      <></>
     </VStack>
   );
 }

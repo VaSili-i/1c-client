@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { Collapse, ConfigProvider } from 'antd';
 import { VStack } from 'shared/ui/Stack';
 import { Content } from 'shared/ui/Stack/stackConfig';
 import { useGetAllWeekPlanQuery } from 'shared/api/general/WeekPlanRtqQueryApi';
@@ -9,7 +8,9 @@ const WeekPlan: React.FC = () => {
   const { data: items } = useGetAllWeekPlanQuery(undefined);
 
   return (
-    <ConfigProvider
+    <>
+    </>
+/*    <ConfigProvider
       theme={{
         components: {
           Collapse: {
@@ -26,7 +27,7 @@ const WeekPlan: React.FC = () => {
           defaultActiveKey={['1']}
         />
       </VStack>
-    </ConfigProvider>
+    </ConfigProvider>*/
   );
 };
 

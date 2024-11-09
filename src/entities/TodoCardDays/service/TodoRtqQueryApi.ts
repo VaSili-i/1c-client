@@ -1,12 +1,7 @@
 import { rtkQueryApi } from 'shared/api/config/rtkQuery';
-import {
-  type TodoCompleteAddTp,
-  type TodoCompleteTp,
-  type TodoTp,
-  TypeTodoEnum
-} from 'shared/types/entities/todoTypes';
+import { type TodoCompleteAddTp, type TodoCompleteTp, type TodoTp, type TypeTodoEnum } from 'shared/types/entities/todoTypes';
 
-const todoRtqQueryApi = rtkQueryApi.injectEndpoints({
+const todoRtqQueryApi = rtkQueryApi.injectEndpoints?.({
   endpoints: (build) => ({
     getAllTodoByType: build.query<TodoCompleteTp[], string>({
       query: (type: TypeTodoEnum) => ({

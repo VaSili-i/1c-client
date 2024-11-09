@@ -5,12 +5,10 @@ import { type LearnResourceTp } from 'shared/types/entities/learnTypes';
 import { Select } from 'shared/ui/Select/Select';
 import { useGetAllLearnStatusQuery } from 'shared/api/general/LearnStatusRtqQueryApi';
 import { useGetAllLevelQuery } from 'shared/api/general/LevelRtqQueryApi';
-import { SelectTag } from 'shared/ui/MultiSelect/MultiSelect';
 import { useGetAllTagQuery } from 'shared/api/general/LearnTagRtqQueryApi';
 import { useGetAllTypeLearnQuery } from 'shared/api/general/LearnTypeRtqQueryApi';
 import { useGetAllMasteringQuery } from 'shared/api/general/LearnMasteringRtqQueryApi';
 import { Modal } from 'shared/ui/Modal/Modal';
-import { DatePicker } from 'antd';
 import { DateTime } from 'luxon';
 
 interface AddLearnResourceProps {
@@ -46,15 +44,7 @@ export function AddLearnResource({ clsName, toggleOpen, isOpen }: AddLearnResour
       <Select value={learn.priority?.code} changeValue={changeAct} options={levelList} label={'priority'} />
       <Select value={learn.status?.code} changeValue={changeAct} options={statusList} label={'status'} />
       <Select value={learn.mastering?.code} changeValue={changeAct} options={learnMasteringList} label={'mastering'} />
-      <DatePicker
-        onChange={(event) => {
-          const dateTime = (dateString: string): string => {
-            return DateTime.fromFormat(dateString, 'dd.MM.yyyy, HH:mm:ss').toISO()!;
-          };
-          setLearn({ ...learn, timeCreate: dateTime(event.toDate().toLocaleString()) });
-        }}
-      />
-      <SelectTag valueList={learn.tagList} changeValue={changeAct} options={learnTagList} label={'tagList'} />
+
     </Modal>
   );
 }

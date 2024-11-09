@@ -35,9 +35,15 @@
 }
 
 
-/* Адаптивные стили для экранов до 480px */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .imageArrow {
     display: none;
+  }
+
+  .EveryDay {
+    border: none;
+    background: none;
+    box-shadow: none;
+    width: 100%;
   }
 }

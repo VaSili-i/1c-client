@@ -1,5 +1,4 @@
 import { type ReactElement } from 'react';
-import { ConfigProvider, Progress } from 'antd';
 import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './HabitsProgress.module.scss';
 import { type HabitTp } from 'shared/types/entities/learnTypes';
@@ -15,7 +14,8 @@ export function HabitsProgress({ habit, number }: HabitsProgressProps): ReactEle
   const [createHabit] = usePlusOneProgressMutation();
 
   return (
-    <ConfigProvider
+    <></>
+  /*  <ConfigProvider
       theme={{
         components: {
           Progress: {
@@ -35,6 +35,6 @@ export function HabitsProgress({ habit, number }: HabitsProgressProps): ReactEle
           <span className={cls.progressCount}>{getTimeFormat(habit.timeStart)}</span>
         </HStack>
       </VStack>
-    </ConfigProvider>
+    </ConfigProvider>*/
   );
 }

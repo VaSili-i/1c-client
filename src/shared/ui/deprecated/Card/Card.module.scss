@@ -12,3 +12,11 @@
   border-radius: 10px;
   background: var(--reverse-bg-color);
 }
+
+@media (max-width: 768px) {
+  .Card {
+    width: 100%;
+    background: none;
+    box-shadow: none;
+  }
+}

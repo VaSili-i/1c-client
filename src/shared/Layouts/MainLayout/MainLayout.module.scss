@@ -1,18 +1,19 @@
 .MainLayout {
   display: grid;
-  grid-template-columns: minmax(60px, min-content) 1fr minmax(0, min-content);
+  grid-template-columns: 0 1fr minmax(0, min-content);
   grid-template-rows: 60px 1fr;
   height: 100vh;
   overflow: hidden;
 }
 
 .header {
-  grid-column: 1 / span 3;
-  grid-row: 1 / span 1;
+  //grid-column: 1 / span 3;
+  //grid-row: 1 / span 1;
+
 }
 
 .sidebar {
-  grid-column: 1 / span 1;
+  grid-column: 1 / span 3;
   grid-row: 1 / span 2;
   height: 100vh;
 }
@@ -53,73 +54,10 @@
   display: none; /* Скрываем правую панель на мобильных */
 }
 
-/* Адаптивные стили для экранов до 1024px */
-@media (max-width: 1024px) {
-  .MainLayout {
-    grid-template-columns: 1fr; /* Убираем боковые панели */
-    grid-template-rows: 60px 1fr;
-  }
-
-  .header {
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
-  }
-
-  .sidebar {
-    display: none; /* Скрываем sidebar на мобильных */
-  }
-
-  .main {
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
-    padding: 0 10px; /* Уменьшаем отступы */
-    height: calc(100vh - 60px);
-  }
-
-  .rightbar {
-    display: none !important;
-  }
-}
-
-/* Адаптивные стили для экранов до 768px */
 @media (max-width: 768px) {
-  .MainLayout {
-    grid-template-columns: 1fr; /* Убираем боковые панели */
-    grid-template-rows: 60px 1fr;
-  }
-
-  .header {
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
-  }
-
-  .sidebar {
-    display: none; /* Скрываем sidebar на мобильных */
-  }
-
   .main {
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
-    padding: 0 5px; /* Ещё больше уменьшаем отступы */
-    height: calc(100vh - 60px);
-  }
-
-  .rightbar {
-    display: none !important;
-  }
-
-  body {
-    background-color: pink; /* Временный цвет фона для проверки */
-  }
-}
-
-/* Адаптивные стили для экранов до 480px */
-@media (max-width: 480px) {
-  .header {
-    font-size: 16px; /* Уменьшаем размер шрифта для заголовка */
-  }
-
-  .main {
-    padding: 0 5px; /* Минимальные отступы для мобильных */
+    padding: 0;
+    height: 100%; /* Задаём полную высоту */
+    width: 100%;
   }
 }
