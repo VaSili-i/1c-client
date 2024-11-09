@@ -6,9 +6,6 @@
       "config": { "distDir": "build" }
     }
   ],
-  "build": {
-    "command": "next build || true"
-  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
