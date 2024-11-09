@@ -23,12 +23,11 @@ import {
 } from '@chakra-ui/react';
 import { FiHome, FiTrendingUp, FiCompass, FiStar, FiSettings, FiMenu, FiBell, FiChevronDown } from 'react-icons/fi';
 import { type IconType } from 'react-icons';
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { sidebarNavList } from 'app/provider/nav/config/sidebarNavList';
 import { AppLink } from 'shared/ui/Link/AppLink';
 import cls from './Sidebar.module.scss';
 import { joinClassName } from 'shared/lib/joinClassName/joinClassName';
-import type { AppLincType } from 'app/provider/nav/types/types';
 
 interface LinkItemProps {
   name: string;
@@ -36,11 +35,11 @@ interface LinkItemProps {
   path: string;
 }
 
-interface AppLincType extends FlexProps {
+interface NavItemProps extends FlexProps {
+  Icon: IconType;
   children: React.ReactNode;
-  to: string;
-  title: string;
-  Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
+  path: string;
+  name: string;
 }
 
 interface MobileProps extends FlexProps {
@@ -80,7 +79,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 const getIconClassNames = (to: string): string => joinClassName(cls.icon, { [cls.active]: to === location.pathname });
 
-const NavItem = ({ Icon, name, path, ...rest }: AppLincType) => {
+const NavItem = ({ Icon, name, path, ...rest }: NavItemProps) => {
   return (
     <AppLink to={path} style={{ textDecoration: 'none' }}>
       <Flex
@@ -160,4 +159,33 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               </HStack>
             </MenuButton>
             <MenuList color={useColorModeValue('main-color', 'main-color')}>
-              <MenuItem>Profile
+              <MenuItem>Profile</MenuItem>
+              <MenuItem>Settings</MenuItem>
+              <MenuItem>Billing</MenuItem>
+              <MenuDivider />
+              <MenuItem>Sign out</MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
+      </HStack>
+    </Flex>
+  );
+};
+
+const SidebarWithHeader = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <Box minH="100vh" bg={useColorModeValue('up-bg-color', 'up-bg-color')}>
+      <SidebarContent bg={useColorModeValue('up-bg-color', 'up-bg-color')} maxW="100px" onClose={onClose} display={{ base: 'none', md: 'block' }} width="90px" />
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} returnFocusOnClose={false} onOverlayClick={onClose} size="full">
+        <DrawerContent bg={useColorModeValue('up-bg-color', 'up-bg-color')}>
+          <SidebarContent onClose={onClose} />
+        </DrawerContent>
+      </Drawer>
+      <MobileNav bg={useColorModeValue('up-bg-color', 'up-bg-color')} onOpen={onOpen} />
+    </Box>
+  );
+};
+
+export default memo(SidebarWithHeader);
