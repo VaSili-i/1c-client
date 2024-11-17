@@ -13,7 +13,7 @@ interface SelectProps<T> {
 export function Select(props: SelectProps<any>): ReactElement {
   const { options, label, changeValue, value, name } = props;
   const changeValueAct = (event: ChangeEvent<HTMLSelectElement>): void => {
-    const opt = options?.find((opt) => opt.code === event.target.value);
+    const opt = options?.find((opt) => opt.name === event.target.value);
     changeValue?.({ [event.target.name]: opt });
   };
 
@@ -25,7 +25,7 @@ export function Select(props: SelectProps<any>): ReactElement {
     <VStack max className={cls.container}>
       <select name={name ?? label} value={value ?? 'MIDDLE'} onChange={changeValueAct} required={true} className={cls.Select}>
         {options?.map((option) => (
-          <option value={option.code} key={option.code}>
+          <option value={option.name} key={option.name}>
             {option.name}
           </option>
         ))}

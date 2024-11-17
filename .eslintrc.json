@@ -17,7 +17,8 @@
   "plugins": ["react"],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-dynamic-delete": "warn"
+    "@typescript-eslint/no-dynamic-delete": "warn",
+    "react/prop-types": "off"
   },
   "globals": {
     "__IS_DEV__": true,

@@ -1,18 +1,17 @@
 import { rtkQueryApi } from 'shared/api/config/rtkQuery';
-
-import { type LearnResourceTp } from 'shared/types/entities/learnTypes';
+import { type ResourceTvP } from 'shared/types/entities/learnTypes';
 
 const learnResourceRtqQueryApi = rtkQueryApi.injectEndpoints({
   endpoints: (build) => ({
-    getAllLearnResource: build.query<LearnResourceTp[], undefined>({
+    getAllLearnResource: build.query<ResourceTvP[] | Partial<ResourceTvP[]>, undefined>({
       query: () => ({
-        url: 'learn/resource'
+        url: 'resource'
       })
     }),
-    addLearnResource: build.mutation<string, Partial<LearnResourceTp>>({
+    addLearnResource: build.mutation<string, Partial<ResourceTvP>>({
       query: (learnResource) => ({
         method: 'POST',
-        url: 'learn/resource',
+        url: 'resource',
         body: learnResource
       })
     })

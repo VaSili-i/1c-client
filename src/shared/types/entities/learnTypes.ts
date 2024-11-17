@@ -59,6 +59,46 @@ export interface ResourceAnswerTP {
 
 export interface ResourceTP {
   key: string;
+  description: string;
   name: string;
   link: string;
+}
+
+// VvV
+export interface SourceLinkTvP {
+  _id: string;
+  name: string;
+  url: string;
+  img: string;
+}
+
+export interface TagTpV {
+  _id: string;
+  name: string;
+}
+
+export interface PriorityTvP {
+  _id: string;
+  name: string;
+  level: number;
+}
+
+export interface StatusTvP {
+  _id: string;
+  name: string;
+}
+
+export interface ResourceTvP {
+  _id: string;
+  name: string;
+  description: string;
+  link: string;
+  source?: SourceLinkTvP;
+  img: string;
+  tag: TagTpV[];
+  priority: PriorityTvP;
+  usageCount: number;
+  status: StatusTvP;
+  relatedLinks?: SourceLinkTvP[];
+  likeThanCLink?: SourceLinkTvP[];
 }

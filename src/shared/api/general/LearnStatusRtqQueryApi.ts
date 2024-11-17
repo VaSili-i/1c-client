@@ -1,11 +1,11 @@
 import { rtkQueryApi } from 'shared/api/config/rtkQuery';
-import { type LearnStatusTp } from 'shared/types/entities/learnTypes';
+import { type StatusTvP } from 'shared/types/entities/learnTypes';
 
-const learnTypeRtqQueryApi = rtkQueryApi.injectEndpoints({
+const learnTypeRtqQueryApi = rtkQueryApi.injectEndpoints?.({
   endpoints: (build) => ({
-    getAllLearnStatus: build.query<LearnStatusTp[], undefined>({
+    getAllLearnStatus: build.query<StatusTvP[], undefined>({
       query: () => ({
-        url: 'learn/status'
+        url: 'resource/status'
       })
     })
   })

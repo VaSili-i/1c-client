@@ -19,5 +19,5 @@ export const getRouteRegister = (): string => '/register';
 export const getRouteLogout = (): string => '/logout';
 export const getRouteMail = (): string => '/mail';
 export const getRouteTreeResource = (): string => '/tree';
-export const getRouteResourceLink = (): string => '/resourcelink';
+export const getRouteResourceLink = (): string => '/resource';
 

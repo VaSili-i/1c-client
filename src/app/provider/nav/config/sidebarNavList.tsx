@@ -26,7 +26,8 @@ import MailNav from 'shared/assets/icon/nav/mail-nav.svg';
 import HabitNav from 'shared/assets/icon/nav/habit.svg';
 import LinkNav from 'shared/assets/icon/nav/chains_114296.svg';
 
-export const sidebarNavList: AppLincType[] = [
+export let sidebarNavList: AppLincType[];
+sidebarNavList = [
   { to: getRouteMain(), title: 'Main', Icon: ReactNav },
   { to: getRouteTodo(), title: 'To-Do', Icon: TodoNav },
   { to: getRouteResource(), title: 'Resource', Icon: ResourceNav },

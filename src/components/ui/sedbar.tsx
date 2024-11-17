@@ -22,7 +22,7 @@ import {
   MenuList
 } from '@chakra-ui/react';
 import { FiHome, FiTrendingUp, FiCompass, FiStar, FiSettings, FiMenu, FiBell, FiChevronDown } from 'react-icons/fi';
-import { IconBaseProps, type IconType } from 'react-icons';
+import { type IconBaseProps, type IconType } from 'react-icons';
 import { memo } from 'react';
 import { sidebarNavList } from 'app/provider/nav/config/sidebarNavList';
 import { AppLink } from 'shared/ui/Link/AppLink';
@@ -142,7 +142,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               <HStack>
                 <Avatar
                   size={'sm'}
-                  src="https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                  src="https://i3.wp.com/media.kg-portal.ru/anime/g/grancrestsenki/images/grancrestsenki_22.jpg?ssl=1"
                 />
                 <VStack
                   color={useColorModeValue('main-color', 'main-color')}
@@ -150,7 +150,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2">
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">Vasiliy</Text>
                   <Text fontSize="xs">Admin</Text>
                 </VStack>
                 <Box color={useColorModeValue('main-color', 'main-color')} display={{ base: 'none', md: 'flex' }}>
@@ -177,7 +177,13 @@ const SidebarWithHeader = () => {
 
   return (
     <Box minH="100vh" bg={useColorModeValue('up-bg-color', 'up-bg-color')}>
-      <SidebarContent bg={useColorModeValue('up-bg-color', 'up-bg-color')} maxW="100px" onClose={onClose} display={{ base: 'none', md: 'block' }} width="90px" />
+      <SidebarContent
+        bg={useColorModeValue('up-bg-color', 'up-bg-color')}
+        maxW="100px"
+        onClose={onClose}
+        display={{ base: 'none', md: 'block' }}
+        width="90px"
+      />
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} returnFocusOnClose={false} onOverlayClick={onClose} size="full">
         <DrawerContent bg={useColorModeValue('up-bg-color', 'up-bg-color')}>
           <SidebarContent onClose={onClose} />
