@@ -3,7 +3,7 @@ import { type ResourceTvP } from 'shared/types/entities/learnTypes';
 
 const learnResourceRtqQueryApi = rtkQueryApi.injectEndpoints({
   endpoints: (build) => ({
-    getAllLearnResource: build.query<ResourceTvP[] | Partial<ResourceTvP[]>, undefined>({
+    getAllLearnResource: build.query<ResourceTvP[], undefined>({
       query: () => ({
         url: 'resource'
       })
