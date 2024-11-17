@@ -1,4 +1,4 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import customTheme from 'app/style/theme/theme'; // Ваш кастомный стиль
 import AppRouter from './provider/router/ui/AppRouter';
 import React, { type ReactElement } from 'react';
